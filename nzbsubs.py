@@ -68,6 +68,8 @@ def main(nzbfile):
     print('%r successfully processed.' % nzbfile)
 
 if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print('usage: nzbsubs.py input.nzb')
+        sys.exit()
     if os.path.isfile(sys.argv[1]) and main(sys.argv[1]) == False:
         sys.exit(1)
-
