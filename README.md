@@ -4,6 +4,7 @@ nzbsubs
 nzbsubs takes an nzb input and removes all non-subtitle files.
 
 ## dependencies:
+* Python2
 * [pynzb][pynzb]
 
 ## usage:
