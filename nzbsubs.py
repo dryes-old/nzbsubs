@@ -68,7 +68,7 @@ def main(nzbfile):
 if __name__ == '__main__':
     err = 0
     for f in sys.argv[1:]:
-        if os.path.isfile(f) and main(sys.argv[1]) == False:
+        if os.path.isfile(f) and main(f) == False:
             err = (err+1)
     if err > 0:
         sys.exit(1)
