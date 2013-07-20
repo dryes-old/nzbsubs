@@ -1,4 +1,4 @@
-#/usr/bin/python2
+#!/usr/bin/python2
 
 # Author: Joseph Wiseman <joswiseman@gmail>
 # URL: https://github.com/dryes/nzbsubs/
@@ -72,4 +72,3 @@ if __name__ == '__main__':
             err = (err+1)
     if err > 0:
         sys.exit(1)
-
