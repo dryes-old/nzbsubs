@@ -8,8 +8,6 @@ from datetime import date
 from pynzb import nzb_parser
 
 def main(nzbfile):
-    print('Processing: %s\n' % (nzbfile))
-
     try:
         nzb = open(nzbfile, 'r').read()
     except:
@@ -68,6 +66,9 @@ def main(nzbfile):
     print('%r successfully processed.' % nzbfile)
 
 if __name__ == '__main__':
-    if os.path.isfile(sys.argv[1]) and main(sys.argv[1]) == False:
+    err = 0
+    for f in sys.argv[1:]:
+        if os.path.isfile(f) and main(sys.argv[1]) == False:
+            err = (err+1)
+    if err > 0:
         sys.exit(1)
-
