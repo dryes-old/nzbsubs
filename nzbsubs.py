@@ -34,16 +34,16 @@ def main(nzbfile):
     content += '<nzb xmlns="http://www.newzbin.com/DTD/2003/nzb">\n'
     for f in nzbsubs:
         unixdate = str(((f.date.toordinal() - date(1970, 1, 1).toordinal()) * 24*60*60))
-        content += '<file poster="' + cgi.escape(f.poster) + '" date="' + unixdate + '" subject="' + cgi.escape(f.subject) + '">\n'
+        content += '<file poster="%s" date="%s" subject="%s">\n' % (cgi.escape(f.poster, True), unixdate, cgi.escape(f.subject, True))
 
         content += '<groups>\n'
         for g in f.groups:
-            content += '<group>' + g + '</group>\n'
+            content += '<group>%s</group>\n' % (g)
         content += '</groups>\n'
 
         content += '<segments>\n'
         for s in f.segments:
-            content += '<segment bytes="' + str(s.bytes) + '" number="' + str(s.number) + '">' + s.message_id + '</segment>\n'
+            content += '<segment bytes="%s" number="%s">%s</segment>\n' % (str(s.bytes), str(s.number), s.message_id)
         content += '</segments>\n'
 
         content += '</file>\n'
