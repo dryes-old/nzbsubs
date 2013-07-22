@@ -3,7 +3,7 @@
 # Author: Joseph Wiseman <joswiseman@gmail>
 # URL: https://github.com/dryes/nzbsubs/
 
-import os,re,sys
+import cgi,os,re,sys
 from datetime import date
 from pynzb import nzb_parser
 
@@ -34,7 +34,7 @@ def main(nzbfile):
     content += '<nzb xmlns="http://www.newzbin.com/DTD/2003/nzb">\n'
     for f in nzbsubs:
         unixdate = str(((f.date.toordinal() - date(1970, 1, 1).toordinal()) * 24*60*60))
-        content += '<file poster="' + f.poster + '" date="' + unixdate + '" subject="' + f.subject.replace('"', '&quot;') + '">\n'
+        content += '<file poster="' + cgi.escape(f.poster) + '" date="' + unixdate + '" subject="' + cgi.escape(f.subject) + '">\n'
 
         content += '<groups>\n'
         for g in f.groups:
